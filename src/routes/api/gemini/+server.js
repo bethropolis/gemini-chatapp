@@ -9,9 +9,9 @@ export async function POST({ request }) {
   const { query } = await request.json();
 
   try {
-    let text = await gemini.ask(query, {
-      stream: console.log,
-    });
+    const chat = gemini.createChat();
+    
+    let text = await gemini.ask(query);
 
 
     return json({ text }, {
