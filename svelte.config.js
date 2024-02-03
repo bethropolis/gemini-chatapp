@@ -9,10 +9,10 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		csrf: {
-		  checkOrigin: false,
-		},
-		preprocess: [vitePreprocess({})]
-	}
+			checkOrigin: false,
+		}
+	},
+	preprocess: [vitePreprocess({})]
 };
 
 export default config;
