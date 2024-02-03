@@ -8,7 +8,7 @@
 	];
 
 	const addMessage = (newMessage) => {
-		messages = [...messages, newMessage];
+		messages = [...messages, { ...newMessage.detail, id: Date.now() }];
 	};
 </script>
 
