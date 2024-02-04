@@ -12,4 +12,9 @@ import { writable } from "svelte/store";
  */
 export let messages = writable([]);
 
-export let sidebar = writable(true);
+export let user = "you";
+export let bot = "gemini";
+
+export let sidebar = writable(false);
+
+export let isResponding = writable(false);

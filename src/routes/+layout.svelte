@@ -6,11 +6,13 @@
 	import '../app.pcss';
 	import { sidebar } from '$lib/js/store';
 
+  /**
+	 * @param {CustomEvent} event - The custom event object
+	 */
 	const goToChat = (event) => {
 		const chatId = event.detail.id;
-		goto(`/chat/${chatId}`);
+		goto(`/chat/${chatId}`); 
 	};
-
 	
 </script>
 

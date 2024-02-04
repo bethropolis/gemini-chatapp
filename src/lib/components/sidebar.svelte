@@ -21,7 +21,7 @@
 	/>
   
 	<div class="drawer-side">
-	  <div class="p-4 w-80 min-h-full bg-gray-800">
+	  <div class="p-4 w-full lg:w-80 min-h-full bg-gray-800">
 		<button class="btn btn-primary w-3/5 mb-2 uppercase">new chat</button>
 		<h2 class="uppercase text-lg text-gray-500 mt-4">Chats</h2>
 		<ul class="menu text-gray-500">

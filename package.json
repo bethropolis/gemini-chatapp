@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"axios": "^1.6.7",
-		"gemini-ai": "^1.1.0"
+		"gemini-ai": "^1.1.0",
+		"showdown": "^2.1.0"
 	}
 }

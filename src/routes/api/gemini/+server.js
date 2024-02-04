@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
+import { env } from '$env/dynamic/private'; 
 import Gemini from "gemini-ai";
 
 
@@ -12,7 +12,9 @@ const gemini = new Gemini(env.PRIVATE_API_KEY);
  * @return {Promise<object>} The JSON response with the chat text or an error message.
  */
 export async function POST({ request }) {
-  const { msg } = await request.json();
+  const { msg, chats } = await request.json();
+
+  console.log(msg, chats);
 
   if (!msg) {
     return json({ error: 'No message provided' }, { status: 400 });
@@ -20,7 +22,11 @@ export async function POST({ request }) {
 
   
   try {
-    const chat = gemini.createChat();
+    const chat = gemini.createChat({
+      messages: chats,
+      temperature: 0.7,
+      maxOutputTokens: 1000
+    });
     
     let text = await gemini.ask(msg.text);
 
@@ -28,7 +34,7 @@ export async function POST({ request }) {
     return json({ text }, {
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', 
       },
     });
   } 

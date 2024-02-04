@@ -1,5 +1,6 @@
 <script>
 	import { format } from "$lib/js/format";
+	import { bot, user } from "$lib/js/store";
   export let sender = 'user';
   export let text = '';
   export let id = 0;
@@ -12,7 +13,7 @@
       word-wrap: break-word;
     }
   
-    .sender {
+    .user {
       font-weight: bold;
       margin-bottom: 4px;
       @apply text-blue-500;
@@ -25,12 +26,12 @@
     }
   
     .message-text {
-      font-size: 14px;
+      font-size: 1em;
     }
   </style>
   
-  <div class="chat-box bg-inherit">
-    <div class="{sender === 'User' ? 'sender' : 'bot'}">{sender}</div>
+  <div class="chat-box w-full text-left bg-inherit p-2 my-2">
+    <div class="{sender === user ? 'user' : 'bot'}">{sender}</div>
 
     <div class="message-text">{@html format(text)}</div>
   </div>

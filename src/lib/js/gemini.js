@@ -1,6 +1,11 @@
 import axios from "axios";
 import { messages } from "./store";
+import { formatChats } from "./utils";
 
+/**
+ * @typedef {Object} TextObject
+ * @property {string} text - The text property of type string
+ */
 
 
 /**
@@ -27,18 +32,23 @@ const makeRequest = async (chat) => {
  * Asynchronously sends a new message and retrieves a response.
  *
  * @param {Object} newMessage - The new message to be sent
- * @return {Promise<Object>} A Promise object representing the response from the request
+ * @return {Promise<TextObject>} A Promise object representing the response from the request
  */
 export const ask = async (newMessage) => {
-    let chats;
-    let unsubscribe = messages.subscribe((value) => {
-        chats = value;
+
+    /**
+    * @typedef {import('./types.js').formatedMessages}formatedMessages
+    * @type  {Array<[formatedMessages, formatedMessages]>}     
+    * */
+    let chats = [];
+    let unsubscribe = await messages.subscribe((value) => {
+        let formatted = formatChats(value);
+        chats = formatted;
     })
 
-    let chat = {chats, msg: newMessage}
+    let chat = { chats, msg: newMessage }
 
     let response = await makeRequest(chat);
-    console.log(response);
 
     unsubscribe();
     return response.data;
