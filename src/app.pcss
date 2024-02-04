@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.small-scroll {
+		scrollbar-width: thin;
+		scrollbar-color: transparent transparent;
+	}
+
+.small-scroll::-webkit-scrollbar {
+	width: 5px;
+}
+
+.small-scroll::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+.small-scroll::-webkit-scrollbar-thumb {
+	background-color: #cccccc;
+}

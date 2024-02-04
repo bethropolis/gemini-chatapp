@@ -1,22 +1,44 @@
 <script>
+	import { ask } from '$lib/js/gemini';
+	import { messages } from '$lib/js/store';
 	import ChatBox from './ChatBox.svelte';
 	import ChatInput from './ChatInput.svelte';
 
-	let messages = [
-		{ id: 1, sender: 'User', text: 'Hello!' },
-		{ id: 2, sender: 'Bot', text: 'Hi there! How can I help you?' }
-	];
+	let isResponding = false;
 
+	/**
+	 * @param {Object} message - The custom event object containing the new message details
+	 */
+	const askAi = async (message) => {
+		isResponding = true;
+		let botResponse = await ask(message);
+		isResponding = false;
+
+		console.log(botResponse);
+		$messages = [...$messages,{ id: Date.now(), sender: 'Bot', text: botResponse?.text }];
+	};
+
+	/**
+	 * @param {CustomEvent} newMessage - The custom event object containing the new message details
+	 */
 	const addMessage = (newMessage) => {
-		messages = [...messages, { ...newMessage.detail, id: Date.now() }];
+		$messages = [...$messages, { ...newMessage.detail, id: Date.now() }];
+		askAi(newMessage.detail);
 	};
 </script>
 
-<div class="body-container  h-full w-full relative">
-	<div class="messages-container">
-		{#each messages as { id, sender, text }}
+<div class="body-container w-full relative">
+	<div class="messages-container small-scroll">
+		{#each $messages as { id, sender, text }}
 			<ChatBox {id} {sender} {text} />
 		{/each}
+
+		{#if isResponding}
+			<div class="w-full p-2">
+				<div class="skeleton w-24 h-4 mb-2"></div>
+				<div class="skeleton w-11/12 h-14"></div>
+			</div>
+		{/if}
 	</div>
 
 	<div class="mt-4 absolute bottom-2 w-full">
@@ -25,4 +47,11 @@
 </div>
 
 <style>
+	.body-container {
+		height: calc(100vh - 64px);
+	}
+	.messages-container {
+		height: calc(100vh - 64px - 74px);
+		overflow-y: auto;
+	}
 </style>

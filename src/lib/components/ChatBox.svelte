@@ -29,7 +29,7 @@
     }
   </style>
   
-  <div class="chat-box">
+  <div class="chat-box bg-inherit">
     <div class="{sender === 'User' ? 'sender' : 'bot'}">{sender}</div>
 
     <div class="message-text">{@html format(text)}</div>
