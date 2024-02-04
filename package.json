@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-vercel": "^5.1.0",
 		"axios": "^1.6.7",
 		"gemini-ai": "^1.1.0",
 		"showdown": "^2.1.0"
