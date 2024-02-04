@@ -1,12 +1,43 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" class="dark">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/web/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>gemini chat app</title>
+	<!-- Place a description here -->
+	<meta name="description" content="a chat app to talk with the gemini pro model" />
+	<meta property="og:title" content="gemini chat app" />
+	<meta property="og:description" content="a chat app to talk with the gemini pro moodel" />
+	<meta property="og:image" content="/chat.png" />
+	<meta property="og:url" content="https://gemini-chatapp.vercel.app/" />
+
+	<meta name="theme-color" content="#ffffff" />
+	<link rel="apple-touch-icon" href="/web/apple-touch-icon.png" sizes="180x180" />
+	<link rel="mask-icon" href="/web/icon-192-maskable.png" color="#FFFFFF" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://gemini-chatapp.vercel.app/" />
+	<meta property="og:title" content="gemini chat app - ai chat" />
+	<meta property="og:description" content="a chat app to talk with the gemini pro model" />
+	<meta property="og:image" content="/chat.png" />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://gemini-chatapp.vercel.app/" />
+	<meta property="twitter:title" content="gemini chat app - ai chat" />
+	<meta property="twitter:description" content="a chat app to talk with the gemini pro model" />
+	<meta property="twitter:image" content="/chat.png" />
+
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover" class="dark">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>
