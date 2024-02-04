@@ -46,10 +46,10 @@
 
 <style>
 	.body-container {
-		height: calc(100vh - 64px);
+		height: calc(100dvh - 64px);
 	}
 	.messages-container {
-		height: calc(100vh - 64px - 74px);
+		height: calc(100dvh - 64px - 74px);
 		overflow-y: auto;
 	}
 </style>
