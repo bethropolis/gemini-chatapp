@@ -4,25 +4,38 @@
 	import Sidebar from '$lib/components/sidebar.svelte';
 	import NavMenu from '$lib/components/navMenu.svelte';
 	import '../app.pcss';
+	import { sidebar } from '$lib/js/store';
 
+  /**
+	 * @param {CustomEvent} event - The custom event object
+	 */
 	const goToChat = (event) => {
 		const chatId = event.detail.id;
-		goto(`/chat/${chatId}`);
+		goto(`/chat/${chatId}`); 
 	};
+	
 </script>
 
 <main>
-	<main class="flex h-screen overflow-hidden">
-		<div class="hidden md:flex md:flex-shrink-0">
-			<Sidebar on:goToChat={goToChat} />
-		</div>
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <div class="lg:w-80 {$sidebar ? 'w-64' : 'w-0'} overflow-x-hidden transition-all duration-300 transform">
+      <Sidebar on:goToChat={goToChat} />
+    </div>
 
-		<div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
-			<NavMenu />
-			<Body />
-		</div>
-	</main>
+    <!-- Body content -->
+    <div class="flex-1 overflow-x-hidden overflow-y-hidden bg-white">
+      <NavMenu />
+      <Body />
+    </div>
+  </div>
 </main>
 
 <style>
+  @media (max-width: 767px) {
+
+    .lg\:transform {
+      transform: translateX(100%);
+    }
+  }
 </style>
