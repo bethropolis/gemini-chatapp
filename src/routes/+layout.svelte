@@ -5,6 +5,7 @@
 	import NavMenu from '$lib/components/navMenu.svelte';
 	import '../app.pcss';
 	import { sidebar } from '$lib/js/store';
+  import { pwaInfo } from 'virtual:pwa-info'; 
 
   /**
 	 * @param {CustomEvent} event - The custom event object
@@ -14,7 +15,13 @@
 		goto(`/chat/${chatId}`); 
 	};
 	
+
+  $: webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : '' 
 </script>
+
+<svelte:head> 
+ 	{@html webManifestLink} 
+</svelte:head>
 
 <main>
   <div class="flex h-screen overflow-hidden">
