@@ -5,6 +5,7 @@ import { formatChats } from "./utils";
 /**
  * @typedef {Object} TextObject
  * @property {string} text - The text property of type string
+ * @property {string} [error] - The error property of type string
  */
 
 
