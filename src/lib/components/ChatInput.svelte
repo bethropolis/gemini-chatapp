@@ -1,5 +1,5 @@
 <script>
-	import { isResponding, user } from '$lib/js/store';
+	import { isResponding, startingText, user } from '$lib/js/store';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
@@ -24,6 +24,15 @@
 			sendMessage();
 		}
 	};
+
+
+	const changeInput = (text = '')=> {
+		if(text.trim() !== '') {
+			messageInput = text;
+		}
+	}
+
+    $: changeInput($startingText);
 </script>
 
 <div class="input-container px-0 md:px-4 flex items-center">

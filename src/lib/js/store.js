@@ -5,6 +5,7 @@ import { writable } from "svelte/store";
  * @property {number} id - The unique identifier for the message
  * @property {string} sender - The sender of the message
  * @property {string} text - The content of the message
+ * @property {boolean} [error] - if error is present
  */
 
 /**
@@ -18,3 +19,5 @@ export let bot = "gemini";
 export let sidebar = writable(false);
 
 export let isResponding = writable(false);
+
+export let startingText = writable('');

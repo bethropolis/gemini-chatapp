@@ -1,5 +1,7 @@
 <script>
-	import { sidebar } from '$lib/js/store';
+	import { messages, sidebar } from '$lib/js/store';
+	import { fade } from 'svelte/transition';
+
 </script>
 
 <div class="navbar py-0 border-b">
@@ -28,14 +30,16 @@
 		</div>
 	</div>
 	<div class="sm:navbar-center lg:navbar-start">
-		<span class="btn btn-ghost text-xl text-left">
-			<span>Gemini chat</span>
-			<span class="hidden md:block">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24"
-					><path fill="currentColor" d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z" /></svg
-				>
+		{#if $messages.length !== 0}
+			<span class="btn btn-ghost text-xl text-left" in:fade={{ duration: 300 }}>
+				<span>Gemini chat</span>
+				<span class="hidden md:block">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24"
+						><path fill="currentColor" d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z" /></svg
+					>
+				</span>
 			</span>
-		</span>
+		{/if}
 	</div>
 	<div class="navbar-end">
 		<a href="https://github.com/bethropolis/gemini-chatapp">
